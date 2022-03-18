@@ -36,11 +36,12 @@ while True:
            print("Data incoming!!")
 
        packed_msg_size = data[:payload_size]
-       msg_size = 921765
+      
        print(packed_msg_size)
 
        data = data[payload_size:]
-       msg_size = struct.unpack("L", packed_msg_size)[0]
+       msg_size = 2764964
+      # msg_size = struct.unpack("L", packed_msg_size)[0]
        print(msg_size)
        # Retrieve all data based on message size
        while len(data) < msg_size:
@@ -53,10 +54,6 @@ while True:
        frame = pickle.loads(frame_data)
 
        # Display
-       cv2.imshow('normal_client', frame)
+       cv2.imshow("AR-Example", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
 
        key = cv2.waitKey(1) & 0xFF
-       if key == ord('q'):
-           break
-
-
